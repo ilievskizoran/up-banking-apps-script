@@ -15,7 +15,7 @@ Once the Script editor launches in a new tab, you should see a text editor with 
 
 Hit the save icon and name your project.
 
-## Retrieve data and insert it in a cell.
+## Retrieve data and insert it in a cell
 
 Copy the function below into the editor to define it as a new function for apps script.\
 Be sure to replace the value for `UP_TOKEN` with your personal access token.
@@ -27,15 +27,15 @@ To retrieve the account ID to be used with this function, you can query the Up B
 const UP_TOKEN = 'up:yeah:XxXxXxXXxXxXxXXxXxXxXXxXxXxX'; // This is your personal access token
 
 function getAccountBalance(accountId) {
-	const options = {
-		'method': 'GET',
-		'headers': {
-			'Authorization': `Bearer ${UP_TOKEN}`
-		}
-	};
-	const response = UrlFetchApp.fetch(`https://api.up.com.au/api/v1/accounts/${accountId}`, options);
-	const data = JSON.parse(response.getContentText());
-	return parseFloat(data.data.attributes.balance.value);
+  const options = {
+    'method': 'GET',
+    'headers': {
+      'Authorization': `Bearer ${UP_TOKEN}`
+    }
+  };
+  const response = UrlFetchApp.fetch(`https://api.up.com.au/api/v1/accounts/${accountId}`, options);
+  const data = JSON.parse(response.getContentText());
+  return parseFloat(data.data.attributes.balance.value);
 }
 ```
 
@@ -66,5 +66,5 @@ Refresh the page and you should see a new menu item in the top menu called `Up B
 Click on in and you should see `Updated Balances`. Click this to refresh the balances within your sheet.
 
 How does this work?\
-Since our `getAccountBalance` now references the absolute cell, each time the cell contents are updated, the function is triggered which fetches the balance and updates the balance cells.
+Since our `getAccountBalance` function now references the absolute cell, each time the cell contents are updated, the function is triggered which fetches the balance and updates the balance cells.
 
